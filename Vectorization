@@ -1,0 +1,12 @@
+There are 2 main options for vectorization on Intel's processors : 
+1. Automatic Vectorization from ICC/ICPC
+2. Explicit instructions/instrinsics to perform vectorized operations
+
+When doing automatic vectorization, we can use the following flag to see if our loops were vectorized :
+> icpc vector_101.cc -qopt-report
+
+One of the drawbacks with auto-vectorization is that :
+1. It is not smart always (may not parallelize nested loops well)
+2. Will not parallelize if there is a dependency
+3. Needs a known number of iterations
+4. Function must be simd-enabled 
