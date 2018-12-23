@@ -10,3 +10,24 @@ One of the drawbacks with auto-vectorization is that :
 2. Will not parallelize if there is a dependency
 3. Needs a known number of iterations
 4. Function must be simd-enabled 
+
+Extending Auto-vectorization : 
+Since automatic vectorization has some issues with it - we can use use some compiler directives.
+One such option is to use : #pragma omp simd
+This "kind-of" helps resolve most of the issues metioned above with auto-vectorization.
+
+Vectorization Primitives Examples : 
+#pragma omp simd
+#pragma vector always
+#pragma vector aligned | unaligned
+__assume_aligned keyword
+#pragma vector nontemporal | temporal
+#pragma novector
+#pragma ivdep
+restrict qualifier and -restrict command-line argument
+#pragma loop count
+
+For more details visit : https://software.intel.com/node/524530 and https://software.intel.com/node/684214
+
+Custom SIMD/Vectorized Functions : 
+Custom simd-vectorized functions can be created using the directive - #pragma omp declare simd
