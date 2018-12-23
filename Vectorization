@@ -34,7 +34,7 @@ There are 3-4 main kinds of vector registers depending on which architecture bei
 3. ZMM register : 512b wide registers (AVX 512)
 
 Vectorization Primitives Examples : 
-#pragma omp simd
+#pragma omp simd - https://software.intel.com/node/524530  
 #pragma vector always
 #pragma vector aligned | unaligned
 __assume_aligned keyword
