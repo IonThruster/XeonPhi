@@ -1,5 +1,5 @@
 There are 2 main options for vectorization on Intel's processors : 
-1. Automatic Vectorization from ICC/ICPC
+1. Automatic Vectorization from ICC/ICPC (more preferable)
 2. Explicit instructions/instrinsics to perform vectorized operations
 
 When doing automatic vectorization, we can use the following flag to see if our loops were vectorized :
