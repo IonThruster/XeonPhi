@@ -1,3 +1,4 @@
+#How to vectorize code ?
 There are 2 main options for vectorization on Intel's processors : 
 1. Automatic Vectorization from ICC/ICPC (more preferable)
 2. Explicit instructions/instrinsics to perform vectorized operations
@@ -5,16 +6,32 @@ There are 2 main options for vectorization on Intel's processors :
 When doing automatic vectorization, we can use the following flag to see if our loops were vectorized :
 > icpc vector_101.cc -qopt-report
 
+Note : depending on which architecture being targeted, the compiled assembly varies, and to direct the compiler we can use the "-x<version>" flag.  
+MIC-AVX512  : Intel Xeon Phi processors (KNL)  
+CORE-AVX512 : Future Intel Xeon processors  
+CORE-AVX2   : Intel Xeon processor E3/E5/E7 v3, v4 family  
+AVX         : Intel Xeon processor E3/E5 and E3/E5/E7 v2 family  
+SSE4.2      : Intel Xeon processor 55XX, 56XX, 75XX and E7 family  
+host        : architecture on which the code is compiled  
+
+So, -xMIC-AVX512, would compile the code for Xeon-Phi specifically.  
+
 One of the drawbacks with auto-vectorization is that :
 1. It is not smart always (may not parallelize nested loops well)
 2. Will not parallelize if there is a dependency
 3. Needs a known number of iterations
 4. Function must be simd-enabled 
 
-Extending Auto-vectorization : 
+#Extending Auto-vectorization : 
 Since automatic vectorization has some issues with it - we can use use some compiler directives.
 One such option is to use : #pragma omp simd
 This "kind-of" helps resolve most of the issues metioned above with auto-vectorization.
+
+#Vector Registers : 
+There are 3-4 main kinds of vector registers depending on which architecture being targeted.
+1. XMM register : These are 128b legacy SSE instruction registers.
+2. YMM register : 256b registers
+3. ZMM register : 512b wide registers (AVX 512)
 
 Vectorization Primitives Examples : 
 #pragma omp simd
