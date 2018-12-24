@@ -1,0 +1,12 @@
+Class Notes : 
+1. Multithreading and Multi-processing are 2 different ways to paralleize on large machines.
+
+Multi Processing : 
+- In Linux, each process has its "own memory + instrucion stream"
+- So any communication between processes needs to be done explicitly via some "message-passing" protocol.
+- Data might need replication
+
+Multi Threading : 
+- There are multiple instruction streams, but they share a common "memory"
+- So one thread can transparently read memory allocated/assigned/touched by other threads.
+- No Data replication needed since memory is visible to all threads.
