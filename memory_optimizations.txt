@@ -1,0 +1,12 @@
+Lecture Notes : 
+- Flops is relatively cheaper than memory bandwidth
+- if FLOPS/Byte ratio (i.e Arithmetic intensity) is not high enough for the algorithm - it is very difficult to be compute bound.
+- One method to increase bwndwidth is to use the MCDRAM (HBM) on Xeon-Phi
+    - the HBM can operate in 3 modes, 
+    - FLAT mode : HBM acts a NUMA node (without any CPU), needs to be managed by software/programmer
+    - Cache mode : transparent to the OS/Software, and acts as LLC
+        - Least amount of code change needed
+    - Hybrid mode : can partition both ways
+- Memkind library can be used to control HBM allocation 
+- To have better cache utilization - we can optimize the writes to "stream" without caching.
+    - This can be done using #pragma vector nontemporal
