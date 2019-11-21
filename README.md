@@ -1,4 +1,4 @@
-# Learning Xeon-phi
+# Xeon-phi
 
 Holding some course material on Intel's Xeon-Phi parallel architecture, and using this repo for documenting.
 
